@@ -1,6 +1,6 @@
 <h1>Edit <%= @album.title%></h1>
 
-<form action="/albums/<%= @album.id%>" method="post" >
+<form action="/artists/albums/<%= @album.id%>" method="post" >
   <input type="hidden" name="_method" value="put">
 <label>
 Edit album:

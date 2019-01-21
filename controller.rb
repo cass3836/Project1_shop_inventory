@@ -52,13 +52,13 @@ end
 #
 get '/albums/delete/:id' do
   album = Album.find(params[:id])
-  album.delete()
+  album.reduce_stock()
   redirect to ("/albums")
 end
 
 get '/artists/albums/delete/:id' do
   album = Album.find(params[:id])
-  album.delete()
+  album.reduce_stock()
   redirect to ("/artists/#{album.artist_id}")
 end
 
@@ -69,7 +69,7 @@ get '/artists/delete/:id' do
 end
 
 get '/artists/edit/:id' do
-  @artist = Artist.find(params[:id])
+  @artist = Artist.find(params['id'])
   (erb :"artists/edit")
 end
 
@@ -79,24 +79,24 @@ put '/artists/:id' do
   redirect to '/artists'
 end
 
-get '/albums/edit/:id' do
-  @album = Album.find(params[:id])
-  (erb :"albums/edit")
-end
-
-put '/albums/:id' do
-  @album = Album.new(params)
-  @album.update()
-  redirect to '/albums'
-end
+# get '/albums/edit/:id' do
+#   @album = Album.find(params[:id])
+#   (erb :"albums/edit")
+# end
+#
+# put '/albums/:id' do
+#   @album = Album.new(params)
+#   @album.update_check()
+#   redirect to '/albums'
+# end
 
 get '/artists/albums/edit/:id' do
-  @album = Album.find(params[:id])
+  @album = Album.find(params['id'])
   (erb :"albums/edit")
 end
 
 put '/artists/albums/:id' do
   @album = Album.new(params)
-  @album.update()
-  redirect to '/artists/:id'
+  @album.update_check()
+  redirect to "/artists/#{@album.artist_id}"
 end

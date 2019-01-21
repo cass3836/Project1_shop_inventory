@@ -72,6 +72,13 @@ album7 = Album.new(
   'artist_id' => artist1.id
 )
 # album7.check_db()
+album8 = Album.new(
+  'title' => 'Think',
+  'buying_cost' => 5,
+  'price' => 6,
+  'artist_id' => artist2.id
+)
+
 
 
 

@@ -2,8 +2,7 @@
 
 <p>
 <% for album in @artist.albums %>
-<%= album.id%> <%= album.title%>
- <%= album.buying_cost%> <%= album.price%> <%= album.artist_id%>
+<%= album.id%> <%= album.title%> <%= album.buying_cost%> <%= album.price%> <%= album.artist_id%>
  <%= album.stock%>
 <a href="/artists/albums/delete/<%= album.id%>">Delete</a>
 <a href="/artists/albums/edit/<%= album.id%>">Edit</a>
