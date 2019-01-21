@@ -1,0 +1,33 @@
+<p><%=@artist.name%></p>
+
+<p>
+<% for album in @artist.albums %>
+<%= album.id%> <%= album.title%>
+ <%= album.buying_cost%> <%= album.price%> <%= album.artist_id%>
+ <%= album.stock%>
+<a href="/artists/albums/delete/<%= album.id%>">Delete</a>
+<a href="/artists/albums/edit/<%= album.id%>">Edit</a>
+<br><% end %>
+</p>
+
+
+<form action="/artists/<%=@artist.id%>" method="post">
+<label>
+Add album:
+</label><br>
+<label>
+Title:
+</label>
+<input name="title" type="text">
+<label>
+Buying cost:
+</label>
+<input name="buying_cost" type="text">
+<label>
+Price:
+Price:
+</label>
+<input name="price" type="text">
+<input name="artist_id" type="hidden" value ="<%=@artist.id%>">
+<input type="submit">
+</form>

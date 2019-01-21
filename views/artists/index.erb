@@ -1,0 +1,18 @@
+<h1>Artists</h1>
+
+
+<p>
+<% for artist in @artists %>
+<%= artist.id%> <a href="/artists/<%= artist.id%>"><%= artist.name %></a>
+<a href="/artists/delete/<%= artist.id%>"> Delete</a>
+<a href="/artists/edit/<%= artist.id%>">Edit</a><br>
+  <% end %>
+  </p>
+
+<form action="/artists" method="post">
+<label>
+Add artist:
+</label>
+<input name="name" type="text">
+<input type="submit">
+</form>

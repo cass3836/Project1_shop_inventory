@@ -1,0 +1,11 @@
+<h1>Albums</h1>
+
+<p>
+<% for album in @albums %>
+<%= album.id%> <%= album.title %> 
+<%= album.buying_cost%> <%= album.price%> <%= album.artist_id%>
+ <%= album.stock%>
+<a href="/albums/delete/<%= album.id%>">Delete</a>
+<a href="/albums/edit/<%= album.id%>">Edit</a>
+<br><% end %>
+</p>
