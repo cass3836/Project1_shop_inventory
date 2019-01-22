@@ -1,14 +1,31 @@
 <p><%=@artist.name%></p>
 
-<p>
-<% for album in @artist.albums %>
-<%= album.id%> <%= album.title%> <%= album.buying_cost%> <%= album.price%> <%= album.artist_id%>
- <%= album.stock%>
-<a href="/artists/albums/delete/<%= album.id%>">Delete</a>
-<a href="/artists/albums/edit/<%= album.id%>">Edit</a>
-<br><% end %>
-</p>
+<table>
+  <tr>
+    <th>Album code</th>
+    <th>Album title</th>
+    <th>Buying cost</th>
+    <th>Selling price</th>
+    <th>Mark-up</th>
+    <th>Stock</th>
+    <th>In stock?</th>
+    <th></th>
+  </tr>
+  <% for album in @artist.albums %>
+  <tr>
+    <td><%= album.id%></td>
+    <td><%= album.title %></td>
+    <td><%= album.buying_cost%></td>
+    <td><%= album.price%></td>
+    <td><%= (album.price)-(album.buying_cost)%></td>
+    <td><%= album.stock%> <a href="">Add</a> <a href="/artists/albums/delete/<%= album.id%>">Delete</a></td>
+    <td> STOCK STATUS </td>
+    <td><a href="/artists/albums/<%= album.id%>">Edit Album</a></td>
+  </tr>
+  <% end %>
+</table>
 
+<br><br>
 
 <form action="/artists/<%=@artist.id%>" method="post">
 <label>
@@ -23,7 +40,6 @@ Buying cost:
 </label>
 <input name="buying_cost" type="text">
 <label>
-Price:
 Price:
 </label>
 <input name="price" type="text">

@@ -3,7 +3,8 @@ DROP TABLE artists;
 
 CREATE TABLE artists(
   id SERIAL2 PRIMARY KEY,
-  name VARCHAR(255)
+  name VARCHAR(255),
+  genre VARCHAR(255)
 );
 
 CREATE TABLE albums(

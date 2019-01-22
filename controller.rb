@@ -90,7 +90,7 @@ end
 #   redirect to '/albums'
 # end
 
-get '/artists/albums/edit/:id' do
+get '/artists/albums/:id' do
   @album = Album.find(params['id'])
   (erb :"albums/edit")
 end

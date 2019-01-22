@@ -1,10 +1,25 @@
-<h1>Albums</h1>
+<h1>All Stock</h1>
 
-<p>
-<% for album in @albums %>
-<%= album.id%> <%= album.title %>
- <%= album.buying_cost%> <%= album.price%> <%= album.artist_id%>
- <%= album.stock%>
-<a href="/albums/delete/<%= album.id%>">Delete</a>
-<br><% end %>
-</p>
+
+<table>
+  <tr>
+    <th>Artist</th>
+    <th>Album</th>
+    <th>Buying cost</th>
+    <th>Selling price</th>
+    <th>Mark-up</th>
+    <th>Stock</th>
+    <th>In stock?</th>
+  </tr>
+  <% for album in @albums %>
+  <tr>
+    <td><%= album.artist_id%> <a href="/artists/<%= album.artist_id%>"><%= album.artist.name%></a></td>
+    <td><%= album.id%> <%= album.title %></td>
+    <td><%= album.buying_cost%></td>
+    <td><%= album.price%></td>
+    <td><%= (album.price)-(album.buying_cost)%></td>
+    <td><%= album.stock%> <a href="">Add</a> <a href="/albums/delete/<%= album.id%>">Delete</a></td>
+    <td> STOCK STATUS </td>
+  </tr>
+  <% end %>
+</table>

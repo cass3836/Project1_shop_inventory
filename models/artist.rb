@@ -3,11 +3,12 @@ require_relative('../db/sql_runner.rb')
 class Artist
 
   attr_reader :id
-  attr_accessor :name
+  attr_accessor :name, :genre
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
+    @genre = options['genre']
   end
 
   # def to_str()
@@ -17,11 +18,11 @@ class Artist
   def save()
     sql =
     "INSERT INTO artists
-    (name)
+    (name, genre)
     VALUES
-    ($1)
+    ($1, $2)
     RETURNING id"
-    values = [@name]
+    values = [@name, @genre]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id'].to_i
   end
@@ -50,10 +51,10 @@ class Artist
   def update()
     sql =
     "UPDATE artists
-    SET name
-    = $1
-    WHERE id = $2"
-    values = [@name, @id]
+    SET (name, genre)
+    = ($1, $2)
+    WHERE id = $3"
+    values = [@name, @genre, @id]
     SqlRunner.run(sql, values)
   end
 

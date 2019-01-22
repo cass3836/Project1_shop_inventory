@@ -6,13 +6,13 @@ require_relative('models/album.rb')
 Artist.delete_all()
 Album.delete_all()
 
-artist1 = Artist.new('name' => 'Paul Simon')
+artist1 = Artist.new('name' => 'Paul Simon', 'genre' => 'Other')
 artist1.save()
 
-artist2 = Artist.new('name' => 'Cosmo Jarvis')
+artist2 = Artist.new('name' => 'Cosmo Jarvis', 'genre' => 'Other')
 artist2.save()
 
-artist3 = Artist.new('name' => 'Fleetwood Mac')
+artist3 = Artist.new('name' => 'Fleetwood Mac', 'genre' => 'Other')
 artist3.save()
 
 

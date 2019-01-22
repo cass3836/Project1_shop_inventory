@@ -55,6 +55,7 @@ class Album
   # end
 
   def update_check()
+
       albums = Album.select_1()
       albums2 = []
       for album in albums
@@ -67,7 +68,7 @@ class Album
       end
       if albums2.length == 1
         albums2[0].update_stock
-        self.delete()
+        self.reduce_stock_to_0()
       else self.update()
       end
   end
@@ -96,7 +97,8 @@ class Album
 
   def self.select_1()
     sql =
-    "SELECT * FROM albums"
+    "SELECT * FROM albums
+    ORDER BY artist_id asc"
     result = SqlRunner.run(sql)
     result2 = result.map {|album| Album.new(album)}
     for album in result2
@@ -108,7 +110,8 @@ class Album
 
   def self.select_2()
       sql =
-      "SELECT * FROM albums"
+      "SELECT * FROM albums
+      ORDER BY artist_id asc"
       result = SqlRunner.run(sql)
       result2 = result.map {|album| Album.new(album)}
     return result2
@@ -137,6 +140,15 @@ class Album
     values = [@id]
     SqlRunner.run(sql, values)
     end
+  end
+
+  def reduce_stock_to_0()
+    sql =
+    "UPDATE albums
+    SET stock = 0
+    WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
   end
 
   def update()
