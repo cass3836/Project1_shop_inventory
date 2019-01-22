@@ -1,13 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="en" dir="ltr">
-  <head>
+  <head><br>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" type="text/css" href="/styles/structure.css">
+  <link rel="stylesheet" type="text/css" href="/styles/tables.css">
     <meta charset="utf-8">
     <title>inventory</title>
-      <a href="/albums">All Stock</a>
-      <a href="/artists">Artists</a>
-      <a href="/">Home</a>
   </head>
   <body>
+    <div id="header">
+    <a href="/albums">All Stock</a>
+    <a href="/artists">Artists</a>
+    <a href="/">Home</a>
+    </div>
     <section>
       <%= yield %>
     </section>

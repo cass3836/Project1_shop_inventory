@@ -61,7 +61,8 @@ class Artist
   def albums()
     sql =
     "SELECT * FROM albums
-    WHERE albums.artist_id = $1"
+    WHERE albums.artist_id = $1
+    ORDER BY title"
     values = [@id]
     result = SqlRunner.run(sql, values)
     return result.map {|album| Album.new(album)}
@@ -74,6 +75,16 @@ class Artist
     values = [id]
     artist = SqlRunner.run(sql, values).first
     return Artist.new(artist)
+  end
+
+  def artist_repeat()
+  for album in self.albums
+    if album.artist.name == self.name
+      return nil
+      else
+      return self.name
+    end
+  end
   end
 
 end

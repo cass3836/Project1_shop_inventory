@@ -90,7 +90,7 @@ class Album
   def self.select_1()
     sql =
     "SELECT * FROM albums
-    ORDER BY artist_id asc"
+    ORDER BY artist_id ASC, title"
     result = SqlRunner.run(sql)
     result2 = result.map {|album| Album.new(album)}
     for album in result2
@@ -103,7 +103,7 @@ class Album
   def self.select_2()
       sql =
       "SELECT * FROM albums
-      ORDER BY artist_id asc"
+      ORDER BY artist_id ASC, title"
       result = SqlRunner.run(sql)
       result2 = result.map {|album| Album.new(album)}
     return result2
@@ -148,7 +148,7 @@ class Album
     "UPDATE albums
     SET (title, buying_cost, price)
     = ($1, $2, $3)
-    WHERE id = $5"
+    WHERE id = $4"
     values = [@title, @buying_cost, @price, @id]
     SqlRunner.run(sql, values)
   end
