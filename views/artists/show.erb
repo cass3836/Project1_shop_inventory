@@ -18,8 +18,8 @@
     <td><%= album.buying_cost%></td>
     <td><%= album.price%></td>
     <td><%= (album.price)-(album.buying_cost)%></td>
-    <td><%= album.stock%> <a href="">Add</a> <a href="/artists/albums/delete/<%= album.id%>">Delete</a></td>
-    <td> STOCK STATUS </td>
+    <td><%= album.stock%><br><a href="/artists/albums/add/<%= album.id%>">Add to stock</a><br><a href="/artists/albums/delete/<%= album.id%>">Reduce stock</a></td>
+    <td><%= album.stock_status%></td>
     <td><a href="/artists/albums/<%= album.id%>">Edit Album</a></td>
   </tr>
   <% end %>

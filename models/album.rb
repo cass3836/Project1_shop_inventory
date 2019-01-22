@@ -30,32 +30,14 @@ class Album
       end
     end
     if albums2.length == 1
-      albums2[0].update_stock
+      albums2[0].update_stock()
     elsif albums2 == []
         self.save
     end
   end
 
-  # def update_check()
-  #     albums = Album.select_1()
-  #     albums2 = []
-  #     for album in albums
-  #       if (album.title == self.title &&
-  #         album.buying_cost == self.buying_cost &&
-  #         album.price == self.price &&
-  #         album.artist_id == self.artist_id)
-  #         albums2 << album
-  #       end
-  #     end
-  #     if albums2.length == 1
-  #       albums2[0].update_stock
-  #       self.delete()
-  #     else self.update()
-  #     end
-  # end
 
   def update_check()
-
       albums = Album.select_1()
       albums2 = []
       for album in albums
@@ -86,10 +68,20 @@ class Album
       @id = result[0]['id'].to_i
   end
 
+  def stock_status()
+    if self.stock == 0
+      return "Out of stock"
+    elsif self.stock < 3
+      return "Low stock"
+    else
+      return "In stock"
+    end
+  end
+
   def update_stock()
     sql =
     "UPDATE albums
-    SET stock = (stock + 1)
+    SET stock = stock + 1
     WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
@@ -154,10 +146,10 @@ class Album
   def update()
     sql =
     "UPDATE albums
-    SET (title, buying_cost, price, artist_id)
-    = ($1, $2, $3, $4)
+    SET (title, buying_cost, price)
+    = ($1, $2, $3)
     WHERE id = $5"
-    values = [@title, @buying_cost, @price, @artist_id, @id]
+    values = [@title, @buying_cost, @price, @id]
     SqlRunner.run(sql, values)
   end
 

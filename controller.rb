@@ -100,3 +100,22 @@ put '/artists/albums/:id' do
   @album.update_check()
   redirect to "/artists/#{@album.artist_id}"
 end
+
+get '/albums/add/:id' do
+  @album = Album.find(params['id'])
+  @album.update_stock()
+  redirect to '/albums'
+end
+
+get '/artists/albums/add/:id' do
+  @album = Album.find(params['id'])
+  @album.update_stock()
+  redirect to "/artists/#{@album.artist_id}"
+end
+
+#
+# put 'albums/add/:id' do
+#   @album = Album.new(params)
+#   @album.update_stock()
+#   redirect to 'get/albums'
+# end
