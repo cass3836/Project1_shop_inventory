@@ -54,6 +54,9 @@ artist14.save()
 artist15 = Artist.new('name' => 'Maximum the Hormone', 'genre' => 'Rock')
 artist15.save()
 
+artist16 = Artist.new('name' => 'The Proclaimers', 'genre' => 'Other')
+artist16.save()
+
 album1 = Album.new(
   'title' => 'Graceland',
   'buying_cost' => 7,
@@ -189,6 +192,118 @@ album17 = Album.new(
   'artist_id' => artist11.id
 )
 album17.check_db()
+
+album18 = Album.new(
+  'title' => 'Absolution',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist11.id
+)
+album18.check_db()
+
+album19 = Album.new(
+  'title' => 'Origin of Symmetry',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist11.id
+)
+album19.check_db()
+
+album20 = Album.new(
+  'title' => 'Black holes and revelations',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist11.id
+)
+album20.check_db()
+
+album21 = Album.new(
+  'title' => '40 licks',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist12.id
+)
+album21.check_db()
+
+album22 = Album.new(
+  'title' => 'Gold',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist13.id
+)
+album22.check_db()
+
+album23 = Album.new(
+  'title' => 'Waterloo',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist13.id
+)
+album23.check_db()
+
+album24 = Album.new(
+  'title' => 'In absentia',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist14.id
+)
+album24.check_db()
+
+album25 = Album.new(
+  'title' => 'Dead wing',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist14.id
+)
+album25.check_db()
+
+album26 = Album.new(
+  'title' => 'Bu-ikkesu',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist15.id
+)
+album26.check_db()
+
+album27 = Album.new(
+  'title' => 'You make me feel so young',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist9.id
+)
+album27.check_db()
+
+album28 = Album.new(
+  'title' => "Now! That's what I call coding",
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist0.id
+)
+album28.check_db()
+
+album29 = Album.new(
+  'title' => 'CodeClan',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist0.id
+)
+album29.check_db()
+
+album30 = Album.new(
+  'title' => 'Disney Hits',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist0.id
+)
+album30.check_db()
+
+album31 = Album.new(
+  'title' => '5000 miles (500 miles 10 times over)',
+  'buying_cost' => 4,
+  'price' => 8,
+  'artist_id' => artist16.id
+)
+album31.check_db()
 
 binding.pry
 nil
