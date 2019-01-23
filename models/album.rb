@@ -41,17 +41,19 @@ class Album
       albums = Album.select_1()
       albums2 = []
       for album in albums
-        if (album.title == self.title &&
-          album.buying_cost == self.buying_cost &&
-          album.price == self.price &&
-          album.artist_id == self.artist_id)
+        if (album.title == @title &&
+          album.buying_cost == @buying_cost &&
+          album.price == @price &&
+          album.artist_id == @artist_id)
           albums2 << album
         end
       end
+
       if albums2.length == 1
         albums2[0].update_stock
-        self.reduce_stock_to_0()
-      else self.update()
+        reduce_stock_to_0()
+      else
+        update()
       end
   end
 
@@ -70,13 +72,20 @@ class Album
 
   def stock_status()
     if self.stock == 0
-      return "Out of stock"
+      return {
+        'text' => "Out of stock",
+        'class' => "out-of-stock"}
     elsif self.stock < 3
-      return "Low stock"
+      return {
+        'text' => "Low stock",
+        'class' => "low-stock"}
     else
-      return "In stock"
+      return  {
+        'text' => "In stock",
+        'class' => "in-stock"}
     end
   end
+
 
   def update_stock()
     sql =
@@ -117,7 +126,7 @@ class Album
 
   def delete()
     sql =
-    "DELETE FROM artists
+    "DELETE FROM albums
     WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)

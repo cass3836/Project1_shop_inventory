@@ -39,7 +39,7 @@ end
 post '/artists/:id' do
   album = Album.new(params)
   album.check_db
-  redirect to ("/artists/#{params['id']}")
+  redirect to ("/artists/#{params['id']}/albums")
 end
 
 # get '/albums/:artist_id' do
@@ -60,13 +60,26 @@ end
 get '/artists/albums/delete/:id' do
   album = Album.find(params[:id])
   album.reduce_stock()
-  redirect to ("/artists/#{album.artist_id}")
+  redirect to ("/artists/#{album.artist_id}/albums")
 end
 
 get '/artists/delete/:id' do
   artist = Artist.find(params[:id])
   artist.delete()
   redirect to ("/artists")
+end
+
+get '/albums/perm_delete/:id' do
+  album = Album.find(params[:id])
+  album.delete()
+  redirect to ('/albums')
+end
+
+get 'artists/:id/albums/perm_delete/:album_id' do
+  artist = Artist.find(params['id'])
+  album = Album.find(params['album_id'])
+  album.delete()
+  redirect to ("artists/#{artist.id}/albums")
 end
 
 get '/artists/edit/:id' do
@@ -92,14 +105,16 @@ end
 # end
 
 get '/artists/:id/albums/:album_id' do
-  @album = Album.find(params['id'])
+  @artist = Artist.find(params['id'])
+  @album = Album.find(params['album_id'])
   (erb :"albums/edit")
 end
 
-put '/artists/:id/albums' do
+put '/albums/:id' do
+  # @artist = Artist.find(params['id'])
   @album = Album.new(params)
   @album.update_check()
-  redirect to "/artists/#{@album.artist_id}/albums"
+  redirect to "/artists/#{params['artist_id']}/albums"
 end
 
 get '/albums/add/:id' do
@@ -111,13 +126,15 @@ end
 get '/artists/albums/add/:id' do
   @album = Album.find(params['id'])
   @album.update_stock()
-  redirect to "/artists/#{@album.artist_id}"
+  redirect to "/artists/#{@album.artist_id}/albums"
 end
 
 get '/select_artist' do
   @artists = Artist.select()
   (erb :"artists/select")
 end
+
+
 #
 # put 'albums/add/:id' do
 #   @album = Album.new(params)

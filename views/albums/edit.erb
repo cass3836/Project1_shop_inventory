@@ -1,19 +1,18 @@
 <br><br><h2>Edit '<%= @album.title%>'</h2>
 <br><br>
-<form action="/artists/<%= @album.artist_id %>/albums" method="post" >
+
+<form action="/albums/<%= @album.id %>" method="post" >
   <input type="hidden" name="_method" value="put">
-<label>
-Title:
-</label>
-<input name="title" type="text" value="<%= @album.title%>">
-<label>
-Buying cost:
-</label>
-<input name="buying_cost" type="text" value="<%= @album.buying_cost%>">
-<label>
-Selling price:
-</label>
-<input name="price" type="text" value ="<%=@album.price%>">
-<input name="artist_id" type="hidden">
-<input type="submit">
+  <label>Title:</label>
+  <input name="title" type="text" value="<%= @album.title%>">
+  <label>
+    Buying cost:
+  </label>
+  <input name="buying_cost" type="text" value="<%= @album.buying_cost%>">
+  <label>
+    Selling price:
+  </label>
+  <input name="price" type="text" value ="<%=@album.price%>">
+  <input type="hidden" name="artist_id" value="<%= @artist.id %>">
+  <input type="submit">
 </form>

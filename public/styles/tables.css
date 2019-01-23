@@ -13,3 +13,15 @@ table {
   margin-left:auto;
   margin-right:auto;
 }
+
+.out-of-stock {
+  color: red;
+}
+
+.low-stock {
+  color: orange;
+}
+
+.in-stock {
+  color: green;
+}
