@@ -99,7 +99,7 @@ class Album
   def self.select_1()
     sql =
     "SELECT * FROM albums
-    ORDER BY artist_id ASC, title"
+    ORDER BY title"
     result = SqlRunner.run(sql)
     result2 = result.map {|album| Album.new(album)}
     for album in result2
@@ -112,7 +112,7 @@ class Album
   def self.select_2()
       sql =
       "SELECT * FROM albums
-      ORDER BY artist_id ASC, title"
+      ORDER BY title"
       result = SqlRunner.run(sql)
       result2 = result.map {|album| Album.new(album)}
     return result2

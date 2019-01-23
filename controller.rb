@@ -75,11 +75,10 @@ get '/albums/perm_delete/:id' do
   redirect to ('/albums')
 end
 
-get 'artists/:id/albums/perm_delete/:album_id' do
-  artist = Artist.find(params['id'])
-  album = Album.find(params['album_id'])
+get '/artists/albums/perm_delete/:id' do
+  album = Album.find(params['id'])
   album.delete()
-  redirect to ("artists/#{artist.id}/albums")
+  redirect to ("artists/#{album.artist_id}/albums")
 end
 
 get '/artists/edit/:id' do
@@ -107,13 +106,24 @@ end
 get '/artists/:id/albums/:album_id' do
   @artist = Artist.find(params['id'])
   @album = Album.find(params['album_id'])
+  @redirect = params['redirect']
   (erb :"albums/edit")
 end
+
+# get '/all_stock/artists/:id/albums/:album_id' do
+#   @artist = Artist.find(params['id'])
+#   @album = Album.find(params['album_id'])
+#   (erb :"albums/edit")
+#   # redirect to '/albums'
+# end
 
 put '/albums/:id' do
   # @artist = Artist.find(params['id'])
   @album = Album.new(params)
   @album.update_check()
+  if params['redirect'] == "home"
+    redirect to "/albums"
+  end
   redirect to "/artists/#{params['artist_id']}/albums"
 end
 

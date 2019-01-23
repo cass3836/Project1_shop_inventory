@@ -25,3 +25,12 @@ table {
 .in-stock {
   color: green;
 }
+
+#artist-name {
+  font-weight: bold;
+}
+
+.album-code {
+  color: gray;
+  font-size: 12px;
+}
