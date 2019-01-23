@@ -1,0 +1,34 @@
+input[type="submit"] {
+  text-transform: uppercase;
+}
+
+
+select {
+ width: 150px;
+ padding: 5px 35px 5px 5px;
+ margin: 15px 0;
+ border: 1px solid black;
+ background: white;
+}
+
+input {
+  border: 0.5px solid black;
+  background: white;
+}
+
+
+.artist_form {
+margin-left: auto;
+margin-right: auto;
+width: 450px;
+}
+
+.add_artist_heading {text-align: left;}
+
+.album_form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 635px;
+}
+
+.add_album_heading {text-align: left;}

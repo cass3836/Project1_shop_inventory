@@ -12,7 +12,7 @@ body {
 h1 {
   margin: 0px;
   padding: 0px;
-  font-size: 1.8em;
+  font-size: 30px;
   color: black;
   margin-bottom: 20px;
 }
@@ -31,7 +31,21 @@ a:hover, a:active, a:focus {
   color: blue;
 }
 
+p {
+  font-size: 20px;
+}
 
+.instruction {
+  font-size: 20px
+}
+
+.button {
+  border-style: groove;
+  border-width: 1px;
+  background: white;
+  padding: 2px;
+  border-color: lightgray;
+}
 
 main {
   padding: 25px;

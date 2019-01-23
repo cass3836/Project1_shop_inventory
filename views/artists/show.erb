@@ -1,4 +1,4 @@
-<br><br><p><%=@artist.name%></p>
+<br><br><h1><%=@artist.name%></h1>
 <br><br>
 <table>
   <tr>
@@ -9,7 +9,7 @@
     <th>Mark-up</th>
     <th>Stock</th>
     <th>Stock status</th>
-    <th></th>
+    <th>Edit</th>
   </tr>
   <% for album in @artist.albums %>
   <tr>
@@ -20,16 +20,16 @@
     <td><%= (album.price)-(album.buying_cost)%></td>
     <td><%= album.stock%><br><a href="/artists/albums/add/<%= album.id%>">Add to stock</a><br><a href="/artists/albums/delete/<%= album.id%>">Reduce stock</a></td>
     <td><%= album.stock_status%></td>
-    <td><a href="/artists/albums/<%= album.id%>">Edit Album</a></td>
+    <td><a href="/artists/<%= @artist.id %>/albums/<%= album.id%>">Edit Album</a></td>
   </tr>
   <% end %>
 </table>
 
 <br><br>
 
-<form action="/artists/<%=@artist.id%>" method="post">
+<form class="album_form" action="/artists/<%=@artist.id%>" method="post">
 <label>
-Add album:
+<div class="add_album_heading">Add album:</div>
 </label><br>
 <label>
 Title:
@@ -45,4 +45,4 @@ Price:
 <input name="price" type="text">
 <input name="artist_id" type="hidden" value ="<%=@artist.id%>">
 <input type="submit">
-</form>
+</form><br><br><br>

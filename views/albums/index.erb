@@ -1,4 +1,4 @@
-<br><br><h1>ALL STOCK</h1><br><br>
+<br><br><h1>All Stock</h1><br><br>
 
 <table>
   <tr>
@@ -10,9 +10,13 @@
     <th>Stock</th>
     <th>Stock status</th>
   </tr>
-  <% for album in @albums %>
+  <% for artist in @artists %>
   <tr>
-    <td><%= album.artist_id%> <a href="/artists/<%= album.artist_id%>"><%= album.artist.name%></a></td>
+    <td><a href="/artists/<%= artist.id%>"><%= artist.name %></a></td>
+  </tr>
+  <% for album in artist.albums %>
+  <tr>
+    <td></td>
     <td><%= album.id%> <%= album.title %></td>
     <td><%= album.buying_cost%></td>
     <td><%= album.price%></td>
@@ -21,4 +25,5 @@
     <td><%= album.stock_status%></td>
   </tr>
   <% end %>
-</table>
+  <% end %>
+</table><br><br><br>

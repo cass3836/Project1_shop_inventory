@@ -43,7 +43,8 @@ class Artist
 
   def self.select()
     sql =
-    "SELECT * FROM artists"
+    "SELECT * FROM artists
+    ORDER BY name ASC"
     result = SqlRunner.run(sql)
     return result.map {|artist| Artist.new(artist)}
   end

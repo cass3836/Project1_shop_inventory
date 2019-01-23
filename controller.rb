@@ -12,6 +12,7 @@ get '/' do
 end
 
 get '/albums' do
+  @artists = Artist.select()
   @albums = Album.select_2()
   (erb :"albums/index")
 end
@@ -29,7 +30,7 @@ post '/artists' do
   redirect to ('/artists')
 end
 
-get '/artists/:id' do
+get '/artists/:id/albums' do
   @artist = Artist.find(params[:id])
   (erb :"artists/show")
 end
@@ -90,15 +91,15 @@ end
 #   redirect to '/albums'
 # end
 
-get '/artists/albums/:id' do
+get '/artists/:id/albums/:album_id' do
   @album = Album.find(params['id'])
   (erb :"albums/edit")
 end
 
-put '/artists/albums/:id' do
+put '/artists/:id/albums' do
   @album = Album.new(params)
   @album.update_check()
-  redirect to "/artists/#{@album.artist_id}"
+  redirect to "/artists/#{@album.artist_id}/albums"
 end
 
 get '/albums/add/:id' do
@@ -113,6 +114,10 @@ get '/artists/albums/add/:id' do
   redirect to "/artists/#{@album.artist_id}"
 end
 
+get '/select_artist' do
+  @artists = Artist.select()
+  (erb :"artists/select")
+end
 #
 # put 'albums/add/:id' do
 #   @album = Album.new(params)

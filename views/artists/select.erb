@@ -1,0 +1,14 @@
+<br>
+<h2>Select artist:</h2>
+<br>
+  <% for artist in @artists %>
+    <p><a href="/artists/<%= artist.id %>"><%= artist.name%></a></p>
+  <% end %>
+<br><br>
+<br>
+  <p>
+    <div class="instruction">
+      If artist is not yet added to the database, add them here:<br><br>
+      <a class="button" href="/artists">Add artist to database</a>
+    </div>
+  </p>

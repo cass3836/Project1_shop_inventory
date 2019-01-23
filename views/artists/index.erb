@@ -6,23 +6,28 @@
       <th></th>
       <th>Name of artist/group</th>
       <th>Genre</th>
-      <th></th>
-      <th></th>
+      <th>Delete</th>
+      <th>Edit</th>
     </tr>
     <% for artist in @artists %>
     <tr>
       <td><%= artist.id%></td>
-      <td><a href="/artists/<%= artist.id%>"><%= artist.name %></a></td>
+      <td><a href="/artists/<%= artist.id%>/albums"><%= artist.name %></a></td>
       <td><%= artist.genre%></td>
       <td><a href="/artists/delete/<%= artist.id%>"> Delete artist<br>from database</a></td>
       <td><a href="/artists/edit/<%= artist.id%>">Edit artist</a></td>
     </tr>
     <% end %>
   </table>
+
 <br><br>
-<form action="/artists" method="post">
+
+<form class="artist_form" action="/artists" method="post">
 <label>
-Add artist:
+<div class="add_artist_heading">Add artist:</div>
+</label><br>
+<label>
+Name:
 </label>
 <input name="name" type="text">
 <label>
@@ -35,4 +40,4 @@ Genre:
   </select>
 </label>
 <input type="submit">
-</form>
+</form><br><br><br>
