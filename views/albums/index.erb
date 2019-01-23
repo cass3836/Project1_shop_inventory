@@ -15,7 +15,7 @@
     <td id="artist-name"><a href="/artists/<%= album.artist_id%>/albums"><%= album.artist.name %></a></td>
     <td><%= album.title %><br>
     <p class="album-code">
-    <%= album.id%> <a class ="album-code" href="/artists/<%= album.artist_id%>/albums/<%= album.id%>?redirect=home">Edit album</a><br>
+    <%= album.id%><br>
     <a class="album-code" href="/albums/perm_delete/<%= album.id%>">Delete album<br>from database</a>
     </p></td>
     <td><%= album.buying_cost%></td>

@@ -30,16 +30,17 @@ class Album
       end
     end
     if albums2.length == 1
-      albums2[0].update_stock()
-    elsif albums2 == []
+        albums2[0].update_stock(self, albums2[0])
+      elsif albums2 == []
         self.save
     end
   end
 
 
   def update_check()
-      albums = Album.select_1()
-      albums2 = []
+    # binding.pry
+    albums = Album.select_1()
+    albums2 = []
       for album in albums
         if (album.title == @title &&
           album.buying_cost == @buying_cost &&
@@ -48,24 +49,42 @@ class Album
           albums2 << album
         end
       end
-
       if albums2.length == 1
-        albums2[0].update_stock
-        reduce_stock_to_0()
-      else
-        update()
+          # binding.pry
+          albums2[0].update_stock(self, albums2[0])
+          reduce_stock_to_0()
+        else
+          update()
       end
   end
 
+  def update_stock(album1, album2)
+    # binding.pry
+    sql =
+    "UPDATE albums
+    SET stock = $1
+    WHERE id = $2"
+    values = [(album1.stock + album2.stock), @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def add_to_stock()
+    sql =
+    "UPDATE albums
+    SET stock = stock + 1
+    WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
 
   def save()
       sql =
       "INSERT INTO albums
       (title, buying_cost, price, artist_id, stock)
       VALUES
-      ($1, $2, $3, $4, 1)
+      ($1, $2, $3, $4, $5)
       RETURNING id"
-      values = [@title, @buying_cost, @price, @artist_id]
+      values = [@title, @buying_cost, @price, @artist_id, @stock]
       result = SqlRunner.run(sql, values)
       @id = result[0]['id'].to_i
   end
@@ -75,25 +94,15 @@ class Album
       return {
         'text' => "Out of stock",
         'class' => "out-of-stock"}
-    elsif self.stock < 3
+      elsif self.stock < 3
       return {
         'text' => "Low stock",
         'class' => "low-stock"}
-    else
+      else
       return  {
         'text' => "In stock",
         'class' => "in-stock"}
     end
-  end
-
-
-  def update_stock()
-    sql =
-    "UPDATE albums
-    SET stock = stock + 1
-    WHERE id = $1"
-    values = [@id]
-    SqlRunner.run(sql, values)
   end
 
   def self.select_1()
@@ -110,11 +119,11 @@ class Album
   end
 
   def self.select_2()
-      sql =
-      "SELECT * FROM albums
-      ORDER BY title"
-      result = SqlRunner.run(sql)
-      result2 = result.map {|album| Album.new(album)}
+    sql =
+    "SELECT * FROM albums
+    ORDER BY title"
+    result = SqlRunner.run(sql)
+    result2 = result.map {|album| Album.new(album)}
     return result2
   end
 
@@ -134,12 +143,12 @@ class Album
 
   def reduce_stock()
     if self.stock > 0
-    sql =
-    "UPDATE albums
-    SET stock = (stock - 1)
-    WHERE id = $1"
-    values = [@id]
-    SqlRunner.run(sql, values)
+      sql =
+      "UPDATE albums
+      SET stock = (stock - 1)
+      WHERE id = $1"
+      values = [@id]
+      SqlRunner.run(sql, values)
     end
   end
 

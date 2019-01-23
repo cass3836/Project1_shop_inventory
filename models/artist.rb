@@ -11,10 +11,6 @@ class Artist
     @genre = options['genre']
   end
 
-  # def to_str()
-  #   return "#{@name}"
-  # end
-
   def save()
     sql =
     "INSERT INTO artists
@@ -79,13 +75,13 @@ class Artist
   end
 
   def artist_repeat()
-  for album in self.albums
-    if album.artist.name == self.name
-      return nil
+    for album in self.albums
+      if album.artist.name == self.name
+        return nil
       else
-      return self.name
+        return self.name
+      end
     end
-  end
   end
 
 end

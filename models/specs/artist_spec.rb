@@ -6,9 +6,9 @@ class ArtistTest < Minitest::Test
 
   def setup
     @artist = Artist.new(
-        'name' => 'Paul Simon',
-        'genre' => 'Other'
-      )
+      'name' => 'Paul Simon',
+      'genre' => 'Other'
+    )
   end
 
   def test_artist_has_name

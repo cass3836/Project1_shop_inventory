@@ -18,33 +18,37 @@
     <td><%= album.buying_cost%></td>
     <td><%= album.price%></td>
     <td><%= (album.price)-(album.buying_cost)%></td>
-    <td><%= album.stock%><br><a href="/artists/albums/add/<%= album.id%>">Add to stock</a><br>
+    <td><%= album.stock%><br>
+      <a href="/artists/albums/add/<%= album.id%>">Add to stock</a><br>
       <a href="/artists/albums/delete/<%= album.id%>">Reduce stock</a>
-    <a href="/artists/albums/perm_delete/<%= album.id%>">Delete album<br>from database</a></td>
+    </td>
     <td class="<%= album.stock_status['class']%>"><%= album.stock_status['text']%></td>
-    <td><a href="/artists/<%= album.artist_id%>/albums/<%= album.id%>">Edit Album</a></td>
+    <td>
+      <a href="/artists/<%= album.artist_id%>/albums/<%= album.id%>">Edit Album</a><br>
+      <a href="/artists/albums/perm_delete/<%= album.id%>">Delete album<br>from database</a>
+    </td>
   </tr>
   <% end %>
 </table>
 
-<br><br>
+  <br><br>
 
-<form class="album_form" action="/artists/<%=@artist.id%>" method="post">
-<label>
-<div class="add_album_heading">Add album:</div>
-</label><br>
-<label>
-Title:
-</label>
-<input name="title" type="text">
-<label>
-Buying cost:
-</label>
-<input name="buying_cost" type="text">
-<label>
-Price:
-</label>
-<input name="price" type="text">
-<input name="artist_id" type="hidden" value ="<%=@artist.id%>">
-<input type="submit">
-</form><br><br><br>
+  <form class="album_form" action="/artists/<%=@artist.id%>" method="post">
+    <label>
+      <div class="add_album_heading">Add album:</div>
+    </label><br>
+    <label>
+      Title:
+    </label>
+    <input name="title" type="text">
+    <label>
+      Buying cost:
+    </label>
+    <input name="buying_cost" type="text">
+    <label>
+      Price:
+    </label>
+    <input name="price" type="text">
+    <input name="artist_id" type="hidden" value ="<%=@artist.id%>">
+    <input type="submit">
+  </form><br><br><br>

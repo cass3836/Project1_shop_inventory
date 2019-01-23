@@ -6,12 +6,12 @@ class AlbumTest < Minitest::Test
 
   def setup
     @album = Album.new(
-        'title' => 'Graceland',
-        'buying_cost' => 7,
-        'price' => 10,
-        'artist_id' => nil,
-        'stock' => nil
-      )
+      'title' => 'Graceland',
+      'buying_cost' => 7,
+      'price' => 10,
+      'artist_id' => nil,
+      'stock' => nil
+    )
   end
 
   def test_album_has_title

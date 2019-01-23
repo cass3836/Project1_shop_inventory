@@ -24,8 +24,8 @@ end
 
 post '/artists' do
   if (params['name'] != "") && (params['name'] != nil)
-  artist = Artist.new(params)
-  artist.save
+    artist = Artist.new(params)
+    artist.save
   end
   redirect to ('/artists')
 end
@@ -129,13 +129,13 @@ end
 
 get '/albums/add/:id' do
   @album = Album.find(params['id'])
-  @album.update_stock()
+  @album.add_to_stock()
   redirect to '/albums'
 end
 
 get '/artists/albums/add/:id' do
   @album = Album.find(params['id'])
-  @album.update_stock()
+  @album.add_to_stock()
   redirect to "/artists/#{@album.artist_id}/albums"
 end
 
