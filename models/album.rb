@@ -52,7 +52,7 @@ class Album
       if albums2.length == 1
           # binding.pry
           albums2[0].update_stock(self, albums2[0])
-          reduce_stock_to_0()
+          delete()
         else
           update()
       end
