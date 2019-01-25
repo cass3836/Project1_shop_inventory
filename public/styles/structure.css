@@ -17,6 +17,12 @@ h1 {
   margin-bottom: 20px;
 }
 
+.shop-name {
+  font-family: 'Marker Felt', fantasy;
+  font-size: 60px;
+  color: #660066;
+}
+
 #header {
   font-size: 20px;
 }
