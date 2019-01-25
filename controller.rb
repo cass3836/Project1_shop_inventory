@@ -1,11 +1,11 @@
 require( 'sinatra' )
-require( 'sinatra/contrib/all' )
+require( 'sinatra/contrib/all' ) if development?
 
 require_relative( 'models/artist.rb' )
 require_relative( 'models/album.rb' )
 require_relative( 'models/artist.rb')
 
-also_reload( 'models/*' )
+# also_reload( 'models/*' )
 
 get '/' do
   erb( :index )

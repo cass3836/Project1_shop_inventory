@@ -1,4 +1,4 @@
-require('pry')
+# require('pry')
 require_relative('models/artist.rb')
 require_relative('models/album.rb')
 
@@ -305,5 +305,5 @@ album31 = Album.new(
 )
 album31.check_db()
 
-binding.pry
-nil
+# binding.pry
+# nil
