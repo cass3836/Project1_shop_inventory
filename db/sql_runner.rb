@@ -5,7 +5,7 @@ class SqlRunner
 def self.run(sql, values =[])
   begin
     db = PG.connect({
-      dbname: 'inventory',
+      dbname: 'd1scmrcpqdubvj',
       host: 'ec2-54-225-227-125.compute-1.amazonaws.com',
       port: 5432,
       user: 'axpmkfdwgpmzpr',
