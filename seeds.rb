@@ -1,4 +1,4 @@
-# require('pry')
+require('pry')
 require_relative('models/artist.rb')
 require_relative('models/album.rb')
 
@@ -305,5 +305,29 @@ album31 = Album.new(
 )
 album31.check_db()
 
-# binding.pry
-# nil
+album32 = Album.new(
+  'title' => 'Stranger to Stranger',
+  'buying_cost' => 6,
+  'price' => 10,
+  'artist_id' => artist1.id
+)
+album32.check_db()
+
+album33 = Album.new(
+  'title' => 'Surprise',
+  'buying_cost' => 2,
+  'price' => 6,
+  'artist_id' => artist1.id
+)
+album33.check_db()
+
+album34 = Album.new(
+  'title' => 'One Trick Pony',
+  'buying_cost' => 6,
+  'price' => 8,
+  'artist_id' => artist1.id
+)
+album34.check_db()
+
+binding.pry
+nil
